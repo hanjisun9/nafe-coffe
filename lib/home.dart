@@ -116,7 +116,7 @@ class _HomeState extends State<Home> {
                                   padding: EdgeInsets.symmetric(horizontal: 50, vertical: 9),
                                   decoration: BoxDecoration(
                                     color: Color(0xFFD4AF37),
-                                    borderRadius: BorderRadius.circular(10)v[]
+                                    borderRadius: BorderRadius.circular(10)
                                   ),
                                 )
                               ],
