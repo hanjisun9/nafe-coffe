@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nafe_coffe/home.dart';
+import 'package:nafe_coffe/screens/home.dart';
 import 'package:nafe_coffe/splashscreen.dart';
 
 void main() {
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Poppins',
       ),
-      home: const Home(),
+      home: const SplashScreen(),
     );
   }
 }
