@@ -192,13 +192,16 @@ class _HomeState extends State<Home> {
                         color: Color(0xFF4E342E),
                       ),
                     ),
-                    Text(
-                      'See All',
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xFFD4AF37),
+                    TextButton(
+                      onPressed: () {},
+                      child: const Text(
+                        'See All',
+                        style: TextStyle(
+                          fontFamily: 'Poppins',
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xFFD4AF37),
+                        ),
                       ),
                     ),
                   ],

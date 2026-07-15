@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nafe_coffe/auth/login.dart';
+import 'package:nafe_coffe/auth/register.dart';
 import 'package:nafe_coffe/screens/home.dart';
 import 'package:nafe_coffe/splashscreen.dart';
 
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Poppins',
       ),
-      home: const SplashScreen(),
+      home: const Login(),
     );
   }
 }
