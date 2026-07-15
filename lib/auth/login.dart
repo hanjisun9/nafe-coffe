@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nafe_coffe/auth/register.dart';
+import 'package:nafe_coffe/screens/home.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -106,17 +108,85 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 5),
-                    Positioned(
-                      left: 0,
-                      child: Text(
-                        'Forget password?',
-                        style: TextStyle(
-                          color: Color(0XFFD4AF37),
-                          fontSize: 14
+                    const SizedBox(height: 5),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Forget password?',
+                          style: TextStyle(
+                            color: Color(0XFFD4AF37),
+                            fontSize: 14,
+                          ),
                         ),
-                      )
-                      )
+                      ),
+                    ),
+                    const SizedBox(height: 25),
+
+                    SizedBox(
+                      width: 300,
+                      height: 50,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const Home(),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xFF8D6E63),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadiusGeometry.circular(30),
+                          ),
+                        ),
+                        child: const Text(
+                          'Log in',
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    const SizedBox(height: 25),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'Not registered?',
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize: 14,
+                            color: Colors.white,
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Register(),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            'Sign up',
+                            style: TextStyle(
+                              color: Color(0xFFD4AF37),
+                              fontSize: 14,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),

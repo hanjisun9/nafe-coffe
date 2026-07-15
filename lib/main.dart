@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nafe_coffe/auth/login.dart';
 import 'package:nafe_coffe/auth/register.dart';
 import 'package:nafe_coffe/screens/home.dart';
-import 'package:nafe_coffe/splashscreen.dart';
+import 'package:nafe_coffe/screens/splashscreen.dart';
 
 void main() {
   runApp(const MyApp());
