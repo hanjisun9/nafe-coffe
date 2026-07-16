@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nafe_coffe/screens/menu.dart';
+import 'package:nafe_coffe/screens/menuDetail.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -16,6 +16,9 @@ class _HomeState extends State<Home> {
       'image': 'assets/images/latte.jpg',
       'desc': 'Smooth espresso with silky steamed milk.',
       'isFavorite': false,
+      'rate': 4.9,
+      'descrip':
+          'Virtuoso Latte is our signature handcrafted coffee, combining premium espresso with silky steamed milk to create a smooth and creamy experience. Finished with delicate latte art, every cup delivers warmth, comfort, and a perfectly balanced flavor.',
     },
     {
       'name': 'Americano',
@@ -23,6 +26,9 @@ class _HomeState extends State<Home> {
       'image': 'assets/images/americano.jpg',
       'desc': 'Smooth espresso with a clean finish.',
       'isFavorite': false,
+      'rate': 4.5,
+      'descrip':
+          'Freshly brewed espresso combined with water to create a balanced coffee with a smooth body, rich aroma, and clean finish. A timeless choice for everyday coffee lovers.',
     },
     {
       'name': 'Dry Cappucino',
@@ -30,6 +36,9 @@ class _HomeState extends State<Home> {
       'image': 'assets/images/dryCap.jpg',
       'desc': 'Creamy espresso with velvety foam.',
       'isFavorite': false,
+      'rate': 4.4,
+      'descrip':
+          'Crafted with rich espresso, steamed milk, and a thick layer of velvety milk foam. Cappuccino offers a smooth texture and balanced coffee flavor in every sip.',
     },
     {
       'name': 'Vanilla Latte',
@@ -37,6 +46,9 @@ class _HomeState extends State<Home> {
       'image': 'assets/images/vanilla.jpg',
       'desc': 'Creamy latte with sweet vanilla.',
       'isFavorite': false,
+      'rate': 4.7,
+      'descrip':
+          'A delightful combination of rich espresso, steamed milk, and smooth vanilla syrup. Sweet, creamy, and comforting, it`s the perfect drink for those who enjoy a gentle coffee flavor.',
     },
     {
       'name': 'Taro Coffe',
@@ -44,6 +56,9 @@ class _HomeState extends State<Home> {
       'image': 'assets/images/taro.jpg',
       'desc': 'Creamy taro with rich espresso.',
       'isFavorite': false,
+      'rate': 4.8,
+      'descrip':
+          'A unique fusion of aromatic espresso and creamy taro, creating a smooth texture with a naturally sweet finish. A perfect choice for adventurous coffee lovers looking for something different.',
     },
   ];
 
@@ -58,11 +73,11 @@ class _HomeState extends State<Home> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                SizedBox(height: 20),
                 SizedBox(
                   child: Stack(
                     alignment: Alignment.center,
                     children: [
-                      SizedBox(height: 20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -172,13 +187,16 @@ class _HomeState extends State<Home> {
                                     color: Color(0xFFD4AF37),
                                     borderRadius: BorderRadius.circular(10),
                                   ),
-                                  child: Text(
-                                    'View Now',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 14,
-                                      fontFamily: 'Poppins',
-                                      fontWeight: FontWeight.w600,
+                                  child: GestureDetector(
+                                    onTap: () {},
+                                    child: Text(
+                                      'View Now',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 14,
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w600,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -239,114 +257,125 @@ class _HomeState extends State<Home> {
   }
 
   Widget coffeeCard(Map<String, dynamic> coffee, int index) {
-    return Container(
-      width: 168,
-      margin: EdgeInsets.only(right: 15),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.shade200,
-            blurRadius: 10,
-            offset: Offset(0, 5),
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => MenuDetail(
+              item: coffee,
+              name: coffee['name'],
+              price: coffee['price'],
+              image: coffee['image'],
+              desc: coffee['desc'],
+              descrip: coffee['descrip'],
+              rate: coffee['rate'],
+            ),
           ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Stack(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-                child: Image.asset(
-                  coffee['image'],
-                  height: 150,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              Positioned(
-                top: 10,
-                right: 10,
-                child: InkWell(
-                  onTap: () {
-                    setState(() {
-                      coffeeList[index]['isFavorite'] =
-                          !coffeeList[index]['isFavorite'];
-                    });
-                  },
-                  child: CircleAvatar(
-                    radius: 12,
-                    backgroundColor: Colors.white,
-                    child: Icon(
-                      Icons.favorite,
-                      size: 18,
-                      color: coffee['isFavorite'] ? Colors.red : Colors.grey,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Padding(
-            padding: EdgeInsets.all(12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+        );
+      },
+      child: Container(
+        width: 168,
+        margin: EdgeInsets.only(right: 15),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.shade200,
+              blurRadius: 10,
+              offset: Offset(0, 5),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Stack(
               children: [
-                Text(
-                  coffee['name'],
-                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
-                ),
-                SizedBox(height: 5),
-                Text(
-                  coffee['desc'],
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.grey.shade500,
+                ClipRRect(
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+                  child: Image.asset(
+                    coffee['image'],
+                    height: 150,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
                   ),
                 ),
-                SizedBox(height: 5),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      ('\$${coffee['price']}'),
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 25,
-                        fontWeight: FontWeight.w700,
-                        color: Color(0xFFD4AF37),
+                Positioned(
+                  top: 10,
+                  right: 10,
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        coffeeList[index]['isFavorite'] =
+                            !coffeeList[index]['isFavorite'];
+                      });
+                    },
+                    child: CircleAvatar(
+                      radius: 12,
+                      backgroundColor: Colors.white,
+                      child: Icon(
+                        Icons.favorite,
+                        size: 18,
+                        color: coffee['isFavorite'] ? Colors.red : Colors.grey,
                       ),
                     ),
-
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 15,
-                        vertical: 5,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Color(0xFF8D6E63),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Text(
-                        '+',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w800,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ],
             ),
-          ),
-        ],
+            Padding(
+              padding: EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    coffee['name'],
+                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
+                  ),
+                  SizedBox(height: 5),
+                  Text(
+                    coffee['desc'],
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.grey.shade500,
+                    ),
+                  ),
+                  SizedBox(height: 5),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        ('\$${coffee['price']}'),
+                        style: TextStyle(
+                          fontFamily: 'Poppins',
+                          fontSize: 25,
+                          fontWeight: FontWeight.w700,
+                          color: Color(0xFFD4AF37),
+                        ),
+                      ),
+
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 15,
+                          vertical: 10,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Color(0xFF8D6E63),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Icon(Icons.add, color: Colors.white, size: 16),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

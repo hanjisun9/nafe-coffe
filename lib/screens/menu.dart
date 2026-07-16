@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nafe_coffe/screens/menuDetail.dart';
 
 class Menu extends StatefulWidget {
   const Menu({super.key});
@@ -18,6 +19,9 @@ class _MenuState extends State<Menu> {
       'image': 'assets/images/americano.jpg',
       'desc': 'Smooth espresso with a clean finish.',
       'isFavorite': false,
+      'rate': 4.5,
+      'descrip':
+          'Freshly brewed espresso combined with water to create a balanced coffee with a smooth body, rich aroma, and clean finish. A timeless choice for everyday coffee lovers.',
     },
     {
       'name': 'Dry Cappucino',
@@ -25,6 +29,9 @@ class _MenuState extends State<Menu> {
       'image': 'assets/images/dryCap.jpg',
       'desc': 'Creamy espresso with velvety foam.',
       'isFavorite': false,
+      'rate': 4.4,
+      'descrip':
+          'Crafted with rich espresso, steamed milk, and a thick layer of velvety milk foam. Cappuccino offers a smooth texture and balanced coffee flavor in every sip.',
     },
     {
       'name': 'Ice Red Velvet',
@@ -32,6 +39,9 @@ class _MenuState extends State<Menu> {
       'image': 'assets/images/red.jpg',
       'desc': 'Sweet red velvet with creamy milk.',
       'isFavorite': false,
+      'rate': 5.0,
+      'descrip':
+          'Ice Red Velvet is a delightful blend of rich red velvet flavor, creamy fresh milk, and refreshing ice, creating a smooth and velvety texture in every sip. With its subtle sweetness and elegant finish, this drink is perfect for those who enjoy a refreshing beverage with a touch of indulgence.',
     },
     {
       'name': 'Strawberry Latte',
@@ -39,6 +49,9 @@ class _MenuState extends State<Menu> {
       'image': 'assets/images/strawlat.jpg',
       'desc': 'Sweet strawberry with creamy latte.',
       'isFavorite': false,
+      'rate': 5.2,
+      'descrip':
+          'Strawberry Latte combines rich espresso, creamy milk, and sweet strawberry flavor into a smooth and refreshing drink. A delightful choice for those who love coffee with a fruity twist.',
     },
     {
       'name': 'Taro Coffe',
@@ -46,6 +59,9 @@ class _MenuState extends State<Menu> {
       'image': 'assets/images/taro.jpg',
       'desc': 'Creamy taro with rich espresso.',
       'isFavorite': false,
+      'rate': 4.8,
+      'descrip':
+          'A unique fusion of aromatic espresso and creamy taro, creating a smooth texture with a naturally sweet finish. A perfect choice for adventurous coffee lovers looking for something different.',
     },
     {
       'name': 'Vanilla Latte',
@@ -53,13 +69,19 @@ class _MenuState extends State<Menu> {
       'image': 'assets/images/vanilla.jpg',
       'desc': 'Creamy latte with sweet vanilla.',
       'isFavorite': false,
+      'rate': 4.7,
+      'descrip':
+          'A delightful combination of rich espresso, steamed milk, and smooth vanilla syrup. Sweet, creamy, and comforting, it`s the perfect drink for those who enjoy a gentle coffee flavor.',
     },
-        {
+    {
       'name': 'Virtuoso Latte',
       'price': 25,
       'image': 'assets/images/latte.jpg',
       'desc': 'Smooth espresso with silky steamed milk.',
       'isFavorite': false,
+      'rate': 4.9,
+      'descrip':
+          'Virtuoso Latte is our signature handcrafted coffee, combining premium espresso with silky steamed milk to create a smooth and creamy experience. Finished with delicate latte art, every cup delivers warmth, comfort, and a perfectly balanced flavor.',
     },
   ];
 
@@ -194,10 +216,24 @@ class _MenuState extends State<Menu> {
                   itemBuilder: (context, index) {
                     final item = coffee[index];
                     return GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MenuDetail(
+                              item: item,
+                              name: item['name'],
+                              price: item['price'],
+                              image: item['image'],
+                              desc: item['desc'],
+                              descrip: item['descrip'],
+                              rate: item['rate'],
+                            ),
+                          ),
+                        );
+                      },
                       child: Container(
                         height: 180,
-                        margin: EdgeInsets.only(right: 15),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20),
@@ -287,23 +323,23 @@ class _MenuState extends State<Menu> {
                                         ),
                                       ),
 
-                                      Container(
-                                        padding: EdgeInsets.symmetric(
-                                          horizontal: 15,
-                                          vertical: 5,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFF8D6E63),
-                                          borderRadius: BorderRadius.circular(
-                                            12,
+                                      GestureDetector(
+                                        onTap: () {},
+                                        child: Container(
+                                          padding: EdgeInsets.symmetric(
+                                            horizontal: 15,
+                                            vertical: 10,
                                           ),
-                                        ),
-                                        child: Text(
-                                          '+',
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w800,
+                                          decoration: BoxDecoration(
+                                            color: Color(0xFF8D6E63),
+                                            borderRadius: BorderRadius.circular(
+                                              12,
+                                            ),
+                                          ),
+                                          child: Icon(
+                                            Icons.add,
                                             color: Colors.white,
+                                            size: 16,
                                           ),
                                         ),
                                       ),
