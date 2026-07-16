@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nafe_coffe/screens/menu.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -13,7 +14,7 @@ class _HomeState extends State<Home> {
       'name': 'Virtuoso Latte',
       'price': 25,
       'image': 'assets/images/latte.jpg',
-      'desc': 'Classic espresso blended with steamed milk.',
+      'desc': 'Smooth espresso with silky steamed milk.',
       'isFavorite': false,
     },
     {
@@ -50,10 +51,10 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Color.fromARGB(255, 255, 255, 247),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -61,6 +62,7 @@ class _HomeState extends State<Home> {
                   child: Stack(
                     alignment: Alignment.center,
                     children: [
+                      SizedBox(height: 20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -70,10 +72,13 @@ class _HomeState extends State<Home> {
                               'https://i.pinimg.com/736x/02/c2/5d/02c25d44b20f9d94caaf24c21c49861d.jpg',
                             ),
                           ),
-                          Icon(
-                            Icons.shopping_bag_outlined,
-                            color: Color(0xFF4E342E),
-                            size: 20,
+                          GestureDetector(
+                            onTap: () {},
+                            child: Icon(
+                              Icons.notifications,
+                              color: Color(0xFF4E342E),
+                              size: 20,
+                            ),
                           ),
                         ],
                       ),
@@ -100,14 +105,21 @@ class _HomeState extends State<Home> {
                 SizedBox(height: 25),
                 TextField(
                   decoration: InputDecoration(
-                    hintText: 'Search',
-                    hintStyle: TextStyle(color: Colors.grey.shade400),
+                    hintText: 'Find your favorite coffee...',
+                    hintStyle: TextStyle(color: Colors.grey.shade500),
                     prefixIcon: Icon(Icons.search),
                     filled: true,
-                    fillColor: Colors.grey.shade100,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(50),
-                      borderSide: BorderSide.none,
+                    fillColor: Colors.white,
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide(color: Colors.black12, width: 1),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide(
+                        color: Color(0xFFD4AF37),
+                        width: 1,
+                      ),
                     ),
                   ),
                 ),
@@ -164,7 +176,7 @@ class _HomeState extends State<Home> {
                                     'View Now',
                                     style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 12,
+                                      fontSize: 14,
                                       fontFamily: 'Poppins',
                                       fontWeight: FontWeight.w600,
                                     ),
@@ -179,7 +191,7 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                 ),
-                SizedBox(height: 25),
+                SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -206,7 +218,7 @@ class _HomeState extends State<Home> {
                     ),
                   ],
                 ),
-                SizedBox(height: 25),
+                SizedBox(height: 10),
                 SizedBox(
                   height: 270,
                   child: ListView.builder(
@@ -232,7 +244,7 @@ class _HomeState extends State<Home> {
       margin: EdgeInsets.only(right: 15),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.shade200,
