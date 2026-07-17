@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nafe_coffe/screens/cart.dart';
 import 'package:nafe_coffe/screens/menuDetail.dart';
 
 class Menu extends StatefulWidget {
@@ -323,8 +324,16 @@ class _MenuState extends State<Menu> {
                                         ),
                                       ),
 
-                                      GestureDetector(
-                                        onTap: () {},
+                                      InkWell(
+                                        onTap: () {
+                                          ScaffoldMessenger.of(
+                                            context,
+                                          ).showSnackBar(
+                                            SnackBar(
+                                              content: Text("Added to cart"),
+                                            ),
+                                          );
+                                        },
                                         child: Container(
                                           padding: EdgeInsets.symmetric(
                                             horizontal: 15,

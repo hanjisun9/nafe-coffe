@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nafe_coffe/auth/login.dart';
 import 'package:nafe_coffe/auth/register.dart';
+import 'package:nafe_coffe/checkout.dart';
+import 'package:nafe_coffe/screens/cart.dart';
 import 'package:nafe_coffe/screens/home.dart';
 import 'package:nafe_coffe/screens/menu.dart';
+import 'package:nafe_coffe/screens/menuDetail.dart';
 import 'package:nafe_coffe/screens/splashscreen.dart';
 
 void main() {
@@ -17,10 +20,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'nana coffe',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'Poppins',
-      ),
-      home: const SplashScreen(),
+      theme: ThemeData(fontFamily: 'Poppins'),
+      home: const Cart(),
     );
   }
 }
