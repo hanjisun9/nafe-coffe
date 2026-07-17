@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nafe_coffe/screens/home.dart';
+import 'package:nafe_coffe/bottomNav.dart';
 
 class Checkout extends StatefulWidget {
   final double total;
@@ -194,11 +194,10 @@ class _CheckoutState extends State<Checkout> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Home()),
+                        MaterialPageRoute(builder: (context) => BottomNav()),
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                      
                       backgroundColor: Colors.transparent,
                       elevation: 0,
                       side: BorderSide(color: Color(0xFF8D6E63), width: 1),

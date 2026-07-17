@@ -178,17 +178,18 @@ class _HomeState extends State<Home> {
                                   ),
                                 ),
                                 SizedBox(height: 5),
-                                Container(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 25,
-                                    vertical: 10,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFFD4AF37),
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: GestureDetector(
-                                    onTap: () {},
+                                SizedBox(
+                                  width: 120,
+                                  height: 35,
+                                  child: ElevatedButton(
+                                    onPressed: () {},
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Color(0xFFD4AF37),
+                                      elevation: 0,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                    ),
                                     child: Text(
                                       'View Now',
                                       style: TextStyle(
@@ -358,16 +359,23 @@ class _HomeState extends State<Home> {
                         ),
                       ),
 
-                      Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 15,
-                          vertical: 10,
+                      InkWell(
+                        onTap: () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text("Added to cart")),
+                          );
+                        },
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 20,
+                            vertical: 10,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Color(0xFF8D6E63),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Icon(Icons.add, color: Colors.white, size: 16),
                         ),
-                        decoration: BoxDecoration(
-                          color: Color(0xFF8D6E63),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Icon(Icons.add, color: Colors.white, size: 16),
                       ),
                     ],
                   ),

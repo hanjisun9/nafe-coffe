@@ -90,121 +90,123 @@ class _MenuState extends State<Menu> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color.fromARGB(255, 255, 255, 247),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 20),
-              SizedBox(
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CircleAvatar(
-                          radius: 20,
-                          backgroundImage: NetworkImage(
-                            'https://i.pinimg.com/736x/02/c2/5d/02c25d44b20f9d94caaf24c21c49861d.jpg',
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 20),
+                SizedBox(
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          CircleAvatar(
+                            radius: 20,
+                            backgroundImage: NetworkImage(
+                              'https://i.pinimg.com/736x/02/c2/5d/02c25d44b20f9d94caaf24c21c49861d.jpg',
+                            ),
                           ),
-                        ),
-                        GestureDetector(
-                          onTap: () {},
-                          child: Icon(
-                            Icons.notifications,
-                            color: Color(0xFF4E342E),
-                            size: 20,
+                          GestureDetector(
+                            onTap: () {},
+                            child: Icon(
+                              Icons.notifications,
+                              color: Color(0xFF4E342E),
+                              size: 20,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
+                        ],
+                      ),
 
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Image.asset('assets/icons/logo.png', width: 25),
-                        SizedBox(width: 5),
-                        Text(
-                          'Nana Coffee',
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset('assets/icons/logo.png', width: 25),
+                          SizedBox(width: 5),
+                          Text(
+                            'Nana Coffee',
+                            style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 14,
+                              color: Color(0xFF4E342E),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+
+                SizedBox(height: 25),
+                Text(
+                  'Coffee Menu',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 35,
+                    color: Color(0xFF4E342E),
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                SizedBox(height: 3),
+                Text(
+                  'Carefully brewed, crafted for every coffee moment.',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 14,
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+
+                SizedBox(height: 20),
+                Row(
+                  children: List.generate(categories.length, (index) {
+                    final isSelected = selectedIndex == index;
+
+                    return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedIndex = index;
+                        });
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.only(right: 10),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 8,
+                        ),
+                        decoration: BoxDecoration(
+                          color: isSelected
+                              ? const Color(0xFF4E342E)
+                              : const Color(0xFFF3EDE5),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Text(
+                          categories[index],
                           style: TextStyle(
                             fontFamily: 'Poppins',
                             fontSize: 14,
-                            color: Color(0xFF4E342E),
+                            color: isSelected
+                                ? Colors.white
+                                : const Color(0xFF4E342E),
+                            fontWeight: isSelected
+                                ? FontWeight.w600
+                                : FontWeight.w400,
                           ),
                         ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-
-              SizedBox(height: 25),
-              Text(
-                'Coffee Menu',
-                style: TextStyle(
-                  fontFamily: 'Poppins',
-                  fontSize: 35,
-                  color: Color(0xFF4E342E),
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              SizedBox(height: 3),
-              Text(
-                'Carefully brewed, crafted for every coffee moment.',
-                style: TextStyle(
-                  fontFamily: 'Poppins',
-                  fontSize: 14,
-                  color: Colors.grey,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-
-              SizedBox(height: 20),
-              Row(
-                children: List.generate(categories.length, (index) {
-                  final isSelected = selectedIndex == index;
-
-                  return GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedIndex = index;
-                      });
-                    },
-                    child: Container(
-                      margin: const EdgeInsets.only(right: 10),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 8,
                       ),
-                      decoration: BoxDecoration(
-                        color: isSelected
-                            ? const Color(0xFF4E342E)
-                            : const Color(0xFFF3EDE5),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Text(
-                        categories[index],
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                          fontSize: 14,
-                          color: isSelected
-                              ? Colors.white
-                              : const Color(0xFF4E342E),
-                          fontWeight: isSelected
-                              ? FontWeight.w600
-                              : FontWeight.w400,
-                        ),
-                      ),
-                    ),
-                  );
-                }),
-              ),
+                    );
+                  }),
+                ),
 
-              SizedBox(height: 25),
-              Expanded(
-                child: GridView.builder(
+                SizedBox(height: 25),
+                GridView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
                   padding: EdgeInsets.zero,
                   itemCount: coffee.length,
                   gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
@@ -335,7 +337,7 @@ class _MenuState extends State<Menu> {
                                         },
                                         child: Container(
                                           padding: EdgeInsets.symmetric(
-                                            horizontal: 15,
+                                            horizontal: 20,
                                             vertical: 10,
                                           ),
                                           decoration: BoxDecoration(
@@ -362,8 +364,8 @@ class _MenuState extends State<Menu> {
                     );
                   },
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nafe_coffe/auth/register.dart';
-import 'package:nafe_coffe/screens/home.dart';
+import 'package:nafe_coffe/bottomNav.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -59,7 +59,7 @@ class _LoginState extends State<Login> {
 
                     SizedBox(height: 40),
                     TextField(
-                      style: TextStyle(color: Color(0xFF4E342E)),
+                      style: TextStyle(color: Colors.white),
                       decoration: InputDecoration(
                         hintText: 'Email',
                         hintStyle: const TextStyle(color: Colors.grey),
@@ -73,13 +73,14 @@ class _LoginState extends State<Login> {
                           borderRadius: BorderRadius.circular(12),
                           borderSide: BorderSide.none,
                         ),
+                        
                       ),
                     ),
 
                     const SizedBox(height: 25),
                     TextField(
                       obscureText: _obscurePassword,
-                      style: TextStyle(color: Color(0xFF4E342E)),
+                      style: TextStyle(color: Colors.white),
                       decoration: InputDecoration(
                         hintText: 'Password',
                         hintStyle: const TextStyle(color: Colors.grey),
@@ -132,7 +133,7 @@ class _LoginState extends State<Login> {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const Home(),
+                              builder: (context) => const BottomNav(),
                             ),
                           );
                         },
