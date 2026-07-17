@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nafe_coffe/checkout.dart';
 import 'package:nafe_coffe/screens/menu.dart';
 
 class MenuDetail extends StatefulWidget {
